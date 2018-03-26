@@ -1,10 +1,13 @@
 package com.luv2code.springdemo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -37,6 +40,11 @@ public class Project {
 	@Column(name="tower_reference_id")
 	private int towerId;
 	
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+						 CascadeType.DETACH, CascadeType.REFRESH,})	
+	@JoinColumn(name="tower_reference_id", insertable = false, updatable = false)
+	private Tower tower;
+	
 	
 	public Project() {
 			
@@ -52,6 +60,7 @@ public class Project {
 		this.contactFirstName = contactFirstName;
 		this.contactLastName = contactLastName;
 		this.contactEmail = contactEmail;
+		this.towerId = towerId;
 	}
 
 

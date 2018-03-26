@@ -32,6 +32,10 @@
 			<input type="button" value="Projects Table"
 				   onclick="window.location.href='projectsList'; return false;"
 				   class="add-button"/>	
+				   
+			<input type="button" value="Verify Tower"
+				   onclick="window.location.href='verifyTower'; return false;"
+				   class="add-button"/>	
 		
 		</div>
 		

@@ -28,4 +28,17 @@ public class ProjectServiceImpl implements ProjectService {
 		projectDAO.saveProject(theProject);
 	}
 
+	@Override
+	@Transactional
+	public Project getProject(int theId) {
+		
+		return projectDAO.getProject(theId);
+	}
+
+	@Override
+	@Transactional
+	public void deleteProject(int theId) {
+		projectDAO.deleteProject(theId);
+	}
+
 }

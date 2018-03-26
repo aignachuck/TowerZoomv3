@@ -43,4 +43,11 @@ public class TowerServiceImpl implements TowerService {
 		
 	}
 
+	@Override
+	@Transactional
+	public int confirmTower(int theNumber) {
+
+		return towerDAO.confirmTower(theNumber);
+	}
+
 }

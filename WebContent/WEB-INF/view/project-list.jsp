@@ -55,15 +55,15 @@
 				
 <!-- 					construct an update link -->
 					
-<%-- 					<c:url var="updateLink" value="/main/addProjectForm"> --%>
-<%-- 						<c:param name="customerId" value="${tempCustomer.id}"/> --%>
-<%-- 					</c:url> --%>
+					<c:url var="updateLink" value="/main/updateTowerForm">
+						<c:param name="projectNumber" value="${tempProject.projectNumber}"/>
+					</c:url>
 					
 <!-- 					construct an update link -->
 					
-<%-- 					<c:url var="deleteLink" value="/customer/delete"> --%>
-<%-- 						<c:param name="customerId" value="${tempCustomer.id}"/> --%>
-<%-- 					</c:url> --%>
+					<c:url var="deleteLink" value="/main/deleteProject">
+						<c:param name="projectNumber" value="${tempProject.projectNumber}"/>
+					</c:url>
 					
 					<tr>
 						<td> ${tempProject.projectNumber} </td>
@@ -75,11 +75,11 @@
 						<td> ${tempProject.contactEmail} </td>
 						<td> ${tempProject.towerId} </td>
 						
-<!-- 						<td> -->
-<%-- 							<a href="${updateLink}">Update</a> --%>
-<!-- 							| -->
-<%-- 						 	<a href="${deleteLink}" onclick="if(!(confirm('Are you sure you want to remove this customer?'))) return false">Delete</a> --%>
-<!-- 						</td>				 -->
+						<td>
+							<a href="${updateLink}">Update</a>
+							|
+						 	<a href="${deleteLink}" onclick="if(!(confirm('Are you sure you want to remove this project?'))) return false">Delete</a>
+						</td>				
 					</tr>
 				
 				</c:forEach>

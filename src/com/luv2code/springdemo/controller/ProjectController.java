@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.luv2code.springdemo.entity.Customer;
 import com.luv2code.springdemo.entity.Project;
 import com.luv2code.springdemo.entity.Tower;
 import com.luv2code.springdemo.service.ProjectService;
@@ -77,14 +76,38 @@ public class ProjectController {
 		return "tower-form";
 	}
 	
+	@GetMapping("/verifyTower")
+	public String verifyTower(Model theModel) {
+		
+//		Project theProject = new Project();
+		Tower theTower = new Tower();
+								
+//		theModel.addAttribute("project", theProject);
+		theModel.addAttribute("number", theTower);
+		
+		
+		return "verify-tower";
+	}
+	
+	@PostMapping("/confirmTower")
+	public String confirmTower(@ModelAttribute("number") int theNumber) {
+		
+		towerService.confirmTower(theNumber);	
+		
+		
+		return "verify-tower";
+	}
+	
 	@GetMapping("/addProjectForm")
 	public String addProjectForm(Model theModel) {
 		
 		//create model attribute to bind form data
 		
 		Project theProject = new Project();
-				
+//		Tower theTower = new Tower();
+								
 		theModel.addAttribute("project", theProject);
+//		theModel.addAttribute("tower", theTower);
 		
 		return "project-form";
 	}
@@ -125,6 +148,20 @@ public class ProjectController {
 		return "tower-form";
 	}
 	
+	//update an existing project
+	@GetMapping("/updateProjectForm")
+	public String updateProjectForm(@RequestParam("towerId") int theId,
+									Model theModel) {
+		//get project from the service
+		Project theProject = projectService.getProject(theId);
+		
+		//set project as model attribute for pre-population
+		theModel.addAttribute("project", theProject);
+		//send project over to the form
+		
+		return "project-form";
+	}
+	
 	//delete an existing tower
 	@GetMapping("/deleteTower")
 	public String deleteTower(@RequestParam("towerId") int theId) {
@@ -135,6 +172,17 @@ public class ProjectController {
 		//return to the tower list
 		return "redirect:/main/towersList";
 		
+	}
+	
+	//delete an existing project
+	@GetMapping("/deleteProject")
+	public String deleteProject(@RequestParam("projectNumber") int theId) {
+		
+		//delete the project
+		projectService.deleteProject(theId);
+		
+		//return to the project list
+		return "redirect:/main/projectsList";
 	}
 	
 }

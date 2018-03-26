@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.luv2code.springdemo.entity.Project;
+import com.luv2code.springdemo.entity.Tower;
 
 @Repository
 public class ProjectDAOImpl implements ProjectDAO {
@@ -43,6 +44,34 @@ public class ProjectDAOImpl implements ProjectDAO {
 		
 		//save the project to the database
 		currentSession.saveOrUpdate(theProject);
+	}
+	
+
+
+	@Override
+	public Project getProject(int theId) {
+
+		//get the current session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		//retrieve from database using the primary key
+		Project theProject = currentSession.get(Project.class, theId);
+		
+		return theProject;
+	}
+
+	@Override
+	public void deleteProject(int theId) {
+		
+		//get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		//run query to find the project
+		Query theQuery = currentSession.createQuery("delete from Project where projectNumber=:inputId");
+		theQuery.setParameter("inputId", theId);
+		
+		//execute query to delete the project
+		theQuery.executeUpdate();
 	}
 
 }
