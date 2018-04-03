@@ -41,9 +41,11 @@ public class Project {
 	private int towerId;
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-						 CascadeType.DETACH, CascadeType.REFRESH,})	
-	@JoinColumn(name="tower_reference_id", insertable = false, updatable = false)
+						 CascadeType.DETACH, CascadeType.REFRESH})	
+	@JoinColumn(name="tower_reference_id", insertable=false, updatable=false)
 	private Tower tower;
+	
+	//need insertable/updatable = False?
 	
 	
 	public Project() {
@@ -142,6 +144,16 @@ public class Project {
 	public void setTowerId(int towerId) {
 		this.towerId = towerId;
 	}
+	
+
+	public Tower getTower() {
+		return tower;
+	}
+
+
+	public void setTower(Tower tower) {
+		this.tower = tower;
+	}
 
 
 	@Override
@@ -151,6 +163,7 @@ public class Project {
 				+ ", contactLastName=" + contactLastName + ", contactEmail=" + contactEmail + ", towerId=" + towerId
 				+ "]";
 	}
+	
 
 		
 	

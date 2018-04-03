@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.luv2code.springdemo.dao.ProjectDAO;
 import com.luv2code.springdemo.entity.Project;
+import com.luv2code.springdemo.entity.Tower;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -28,17 +29,30 @@ public class ProjectServiceImpl implements ProjectService {
 		projectDAO.saveProject(theProject);
 	}
 
+
+
 	@Override
 	@Transactional
 	public Project getProject(int theId) {
+		Project theProject = new Project();
+		Tower theTower = new Tower();
+		int towerId = 0;
 		
-		return projectDAO.getProject(theId);
+		theProject = projectDAO.getProject(theId);
+		
+		if(theProject.getTowerId() != 0) {
+			towerId = theTower.getTowerId();
+			theProject.setTowerId(towerId);
+		}
+	
+		return theProject;
 	}
-
+	
 	@Override
 	@Transactional
 	public void deleteProject(int theId) {
 		projectDAO.deleteProject(theId);
 	}
+	
 
 }

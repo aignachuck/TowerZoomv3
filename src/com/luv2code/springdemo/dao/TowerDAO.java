@@ -14,5 +14,4 @@ public interface TowerDAO {
 
 	public void deleteTower(int theId);
 
-	public int confirmTower(int theNumber);
 }

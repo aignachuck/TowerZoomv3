@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.luv2code.springdemo.entity.Project;
+import com.luv2code.springdemo.entity.Tower;
 
 public interface ProjectService {
 	
@@ -15,5 +16,7 @@ public interface ProjectService {
 	public Project getProject(int theId);
 
 	public void deleteProject(int theId);
+	
+
 
 }

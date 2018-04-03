@@ -14,6 +14,4 @@ public interface TowerService {
 
 	public void deleteTower(int theId);
 
-	public int confirmTower(int theNumber);
-
 }

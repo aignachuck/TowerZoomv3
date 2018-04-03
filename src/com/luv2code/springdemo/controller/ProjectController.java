@@ -24,11 +24,12 @@ public class ProjectController {
 	
 	//need to inject service
 	
-	@Autowired
-	private TowerService towerService;
 	
 	@Autowired
 	private ProjectService projectService;
+	
+	@Autowired
+	private TowerService towerService;
 	
 	//need a main splash page
 	
@@ -76,27 +77,6 @@ public class ProjectController {
 		return "tower-form";
 	}
 	
-	@GetMapping("/verifyTower")
-	public String verifyTower(Model theModel) {
-		
-//		Project theProject = new Project();
-		Tower theTower = new Tower();
-								
-//		theModel.addAttribute("project", theProject);
-		theModel.addAttribute("number", theTower);
-		
-		
-		return "verify-tower";
-	}
-	
-	@PostMapping("/confirmTower")
-	public String confirmTower(@ModelAttribute("number") int theNumber) {
-		
-		towerService.confirmTower(theNumber);	
-		
-		
-		return "verify-tower";
-	}
 	
 	@GetMapping("/addProjectForm")
 	public String addProjectForm(Model theModel) {
@@ -104,10 +84,8 @@ public class ProjectController {
 		//create model attribute to bind form data
 		
 		Project theProject = new Project();
-//		Tower theTower = new Tower();
 								
 		theModel.addAttribute("project", theProject);
-//		theModel.addAttribute("tower", theTower);
 		
 		return "project-form";
 	}
@@ -150,16 +128,17 @@ public class ProjectController {
 	
 	//update an existing project
 	@GetMapping("/updateProjectForm")
-	public String updateProjectForm(@RequestParam("towerId") int theId,
+	public String updateProjectForm(@RequestParam("projectNumber") int theId,
 									Model theModel) {
 		//get project from the service
 		Project theProject = projectService.getProject(theId);
 		
 		//set project as model attribute for pre-population
 		theModel.addAttribute("project", theProject);
+		
 		//send project over to the form
 		
-		return "project-form";
+		return "revise-project-form";
 	}
 	
 	//delete an existing tower

@@ -62,9 +62,12 @@
 						<c:param name="towerId" value="${tempTower.towerId}"/>
 					</c:url>
 					
-					<c:url var="projectLink" value="main/addProjectForm">
-						<c:param name="towerId" value="${tempProject.towerId}"/>
-					</c:url>
+					<!-- the real add project link -->
+					<!-- need to pull the towerId from tower object and set as the towerReferenceId in new project -->
+					
+<%-- 					<c:url var="projectLink" value="main/addProjectForm"> --%>
+<%-- 						<c:param name="towerId" value="${tempTower.towerId}"/> --%>
+<%-- 					</c:url> --%>
 					
 					<tr>
 						<td> ${tempTower.towerNumber} </td>
@@ -76,8 +79,8 @@
 							<a href="${updateLink}">Update</a>
 							|
 						 	<a href="${deleteLink}" onclick="if(!(confirm('Are you sure you want to remove this Tower?'))) return false">Delete</a>
-							|
-							<a href="${projectLink}">Add Project</a>
+<!-- 							| -->
+<%-- 							<a href="${projectLink}">Add Project</a> --%>
 						</td>				
 					</tr>
 				

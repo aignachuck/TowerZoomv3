@@ -37,10 +37,12 @@ public class Tower {
 	@Column(name="state")
 	private String state;
 	
-	@OneToMany(cascade= CascadeType.ALL, 
-			   fetch = FetchType.LAZY, 
-			   mappedBy = "tower")
-	private List<Project> projects = new ArrayList<>();
+	@OneToMany(mappedBy = "tower",
+			   cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+					 CascadeType.DETACH, CascadeType.REFRESH}, 
+			   fetch = FetchType.LAZY 
+			   )
+	private List<Project> projects;
 	
 	public Tower() {
 		
@@ -103,10 +105,29 @@ public class Tower {
 		this.state = state;
 	}
 
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+
 	@Override
 	public String toString() {
 		return "Tower [towerId=" + towerId + ", towerNumber=" + towerNumber + ", towerName=" + towerName
 				+ ", towerPortfolio=" + towerPortfolio + ", city=" + city + ", state=" + state + "]";
+	}
+	
+	public void add(Project tempProject) {
+		if(projects == null) {
+			projects = new ArrayList<>();
+			
+		}
+		
+		projects.add(tempProject);
+		
+		tempProject.setTower(this);
 	}
 	
 	

@@ -65,6 +65,10 @@
 						<c:param name="projectNumber" value="${tempProject.projectNumber}"/>
 					</c:url>
 					
+					<c:url var="addEquipment" value="/main/addEquipment">
+						<c:param name="projectNumber" value="${tempProject.projectNumber}"/>
+					</c:url>
+					
 					<tr>
 						<td> ${tempProject.projectNumber} </td>
 						<td> ${tempProject.projectType} </td>
@@ -77,8 +81,11 @@
 						
 						<td>
 							<a href="${updateLink}">Update</a>
-							|
+							<br>
+							
 						 	<a href="${deleteLink}" onclick="if(!(confirm('Are you sure you want to remove this project?'))) return false">Delete</a>
+						 	<br>
+						 	<a href="${addEquipment}">Add Equipment</a>
 						</td>				
 					</tr>
 				
