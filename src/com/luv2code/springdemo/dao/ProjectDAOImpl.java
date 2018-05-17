@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.luv2code.springdemo.entity.Project;
-import com.luv2code.springdemo.entity.Tower;
 
 @Repository
 public class ProjectDAOImpl implements ProjectDAO {

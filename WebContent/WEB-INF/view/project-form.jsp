@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<title>Star Towers VPM</title>
+<title>TowerZoom</title>
 
 <link type="text/css"
 	  rel="stylesheet"
@@ -67,7 +67,7 @@
 					
 					<tr>
 						<td><label>Tower Reference:</label></td>
-						<td><form:input path="towerId"/></td>
+						<td><form:input path="tower.towerId"/></td>
 					</tr>
 					
 					<tr>

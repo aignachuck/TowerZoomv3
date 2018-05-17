@@ -40,10 +40,18 @@ public class Tower {
 	@OneToMany(mappedBy = "tower",
 			   cascade= {CascadeType.PERSIST, CascadeType.MERGE,
 					 CascadeType.DETACH, CascadeType.REFRESH}, 
-			   fetch = FetchType.LAZY 
-			   )
+			   fetch = FetchType.LAZY)
 	private List<Project> projects;
 	
+	@OneToMany(mappedBy = "towerContract",
+			   cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+						 CascadeType.DETACH, CascadeType.REFRESH},
+			   fetch = FetchType.LAZY)
+	private List<Contract> contracts;
+	
+	
+
+
 	public Tower() {
 		
 	}
@@ -112,14 +120,26 @@ public class Tower {
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
 	}
+	
+	public List<Contract> getContracts() {
+		return contracts;
+	}
+
+	public void setContracts(List<Contract> contracts) {
+		this.contracts = contracts;
+	}
+	
+	
 
 	@Override
 	public String toString() {
 		return "Tower [towerId=" + towerId + ", towerNumber=" + towerNumber + ", towerName=" + towerName
-				+ ", towerPortfolio=" + towerPortfolio + ", city=" + city + ", state=" + state + "]";
+				+ ", towerPortfolio=" + towerPortfolio + ", city=" + city + ", state=" + state + ", projects="
+				+ projects + ", contracts=" + contracts + "]";
 	}
 	
-	public void add(Project tempProject) {
+	//helper class for new projects
+	public void addProject(Project tempProject) {
 		if(projects == null) {
 			projects = new ArrayList<>();
 			
@@ -128,6 +148,18 @@ public class Tower {
 		projects.add(tempProject);
 		
 		tempProject.setTower(this);
+	}
+	
+	//helper class for new contracts
+	public void addContract(Contract tempContract) {
+		if(contracts == null) {
+			contracts = new ArrayList<>();
+			
+		}
+		
+		contracts.add(tempContract);
+		
+		tempContract.setTowerContract(this);
 	}
 	
 	

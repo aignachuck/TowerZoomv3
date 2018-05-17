@@ -4,7 +4,7 @@
 
 <head>
 	<title>
-	Star Towers VPM
+	TowerZoom
 	</title>
 	
 	<link type="text/css"
@@ -16,7 +16,7 @@
 
 	<div id="wrapper">
 		<div id="header">
-			<h2>Virtual Project Manager</h2>
+			<h2>TowerZoom</h2>
 		</div>	
 	</div>
 	
@@ -33,9 +33,21 @@
 				   onclick="window.location.href='projectsList'; return false;"
 				   class="add-button"/>	
 				   
-			<input type="button" value="Verify Tower"
-				   onclick="window.location.href='verifyTower'; return false;"
+			<input type="button" value="Contracts Table"
+				   onclick="window.location.href='contractsList'; return false;"
 				   class="add-button"/>	
+				   
+			<input type="button" value="Equipment Table"
+				   onclick="window.location.href='equipmentList'; return false;"
+				   class="add-button"/>
+				   
+			<input type="button" value="Cables Table"
+				   onclick="window.location.href='cablesList'; return false;"
+				   class="add-button"/>	
+				   
+			<input type="button" value="Ground Table"
+				   onclick="window.location.href='groundList'; return false;"
+				   class="add-button"/>
 		
 		</div>
 		

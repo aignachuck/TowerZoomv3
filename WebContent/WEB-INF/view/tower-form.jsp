@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<title>Star Towers VPM</title>
+<title>TowerZoom</title>
 
 <link type="text/css"
 	  rel="stylesheet"

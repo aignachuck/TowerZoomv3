@@ -5,7 +5,7 @@
 <html>
 
 <head>
-	<title>Star Towers VPM</title>
+	<title>TowerZoom</title>
 
 	<!-- reference the stylesheet -->
 	
@@ -46,7 +46,9 @@
 					<th>Contact First Name</th>
 					<th>Contact Last Name</th>
 					<th>Contact Email</th>
-					<th>Tower Reference</th>		
+					<th>Tower Reference</th>
+					<th>Contract Reference</th>
+					<th>Current Pricing</th>
 				</tr>
 				
 				<!-- Loop over and print the customers -->
@@ -55,7 +57,7 @@
 				
 <!-- 					construct an update link -->
 					
-					<c:url var="updateLink" value="/main/updateTowerForm">
+					<c:url var="updateLink" value="/main/updateProjectForm">
 						<c:param name="projectNumber" value="${tempProject.projectNumber}"/>
 					</c:url>
 					
@@ -65,9 +67,12 @@
 						<c:param name="projectNumber" value="${tempProject.projectNumber}"/>
 					</c:url>
 					
-					<c:url var="addEquipment" value="/main/addEquipment">
+					<!-- construct the pricing link -->
+					
+					<c:url var="updatePricing" value="/main/priceProject">
 						<c:param name="projectNumber" value="${tempProject.projectNumber}"/>
 					</c:url>
+					
 					
 					<tr>
 						<td> ${tempProject.projectNumber} </td>
@@ -77,7 +82,11 @@
 						<td> ${tempProject.contactFirstName} </td>
 						<td> ${tempProject.contactLastName} </td>
 						<td> ${tempProject.contactEmail} </td>
-						<td> ${tempProject.towerId} </td>
+						<td> ${tempProject.getTower().getTowerId()} </td>
+						<td> ${tempProject.getContract().getContractId()} </td>
+						<td> ${tempProject.pricing}</td>
+						
+		
 						
 						<td>
 							<a href="${updateLink}">Update</a>
@@ -85,7 +94,9 @@
 							
 						 	<a href="${deleteLink}" onclick="if(!(confirm('Are you sure you want to remove this project?'))) return false">Delete</a>
 						 	<br>
-						 	<a href="${addEquipment}">Add Equipment</a>
+						 	
+						 	<a href="${updatePricing}" onclick="if(!(confirm('Do you want to auto update this price?'))) return false">Price</a>
+						 	
 						</td>				
 					</tr>
 				

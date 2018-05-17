@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<title>Star Towers VPM</title>
+<title>TowerZoom</title>
 
 <link type="text/css"
 	  rel="stylesheet"
@@ -21,49 +21,51 @@
 
 	<div id="wrapper">
 		<div id="header">
-		<h2>PAM - Project (Asset) Manager</h2>
+		<h2>PCM - Project Cables Manager</h2>
 		</div>
 	</div>
 	
 	<div id="container">
-		<h3>Save Project</h3>
+		<h3>Save Cables</h3>
 		
-		<form:form action="saveProject" modelAttribute="project" method="POST">
+		<form:form action="saveCables" modelAttribute="cables" method="POST">
 			
 			<!-- need to associate data with customer id -->
 			
-			<form:hidden path="projectNumber"/>
-			<form:hidden path="towerId"/>
+			<form:hidden path="cableId"/>
+			
 		
 			<table>
 				<tbody>
+						
 					<tr>
-						<td><label>Project Type:</label></td>
-						<td><form:input path="projectType"/></td>
+						<td><label>Cable Type:</label></td>
+						<td><form:input path="cableType"/></td>
 					</tr>
 					
 					<tr>
-						<td><label>Carrier Name:</label></td>
-						<td><form:input path="carrierName"/></td>
+						<td><label>Cable Quantity:</label></td>
+						<td><form:input path="cableQuantity"/></td>
 					</tr>
 					
 					<tr>
-						<td><label>Contact Company:</label></td>
-						<td><form:input path="contactCompany"/></td>
+						<td><label>Cable Diameter (in.):</label></td>
+						<td><form:input path="cableDiameter"/></td>
 					</tr>
 					<tr>
-						<td><label>Contact First Name:</label></td>
-						<td><form:input path="contactFirstName"/></td>
-					</tr>
-					
-					<tr>
-						<td><label>Contact Last Name:</label></td>
-						<td><form:input path="contactLastName"/></td>
+						<td><label>Cables Per Sector:</label></td>
+						<td><form:input path="cablePerSector"/></td>
 					</tr>
 					
 					<tr>
-						<td><label>Email:</label></td>
-						<td><form:input path="contactEmail"/></td>
+						<td><label>Cable Configuration:</label></td>
+						<td><form:input path="cableConfiguration"/></td>
+					</tr>
+					
+					
+					<tr>
+						<td><label>Project Reference:</label></td>
+						<td><form:input path="cablesProject.projectNumber"/></td>
 					</tr>
 					
 					<tr>
@@ -79,7 +81,7 @@
 	<div style="clear;both;"></div>
 	
 		<p>
-			<a href="${pageContext.request.contextPath}/main/projectsList">Back to List</a>
+			<a href="${pageContext.request.contextPath}/main/cablesList">Back to List</a>
 		
 		</p>
 	</div>
