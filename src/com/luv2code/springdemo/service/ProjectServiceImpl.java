@@ -85,11 +85,11 @@ public class ProjectServiceImpl implements ProjectService {
 						int equipCount = readEquip.getEquipmentQuantity();
 						double proposedRAD = readEquip.getEquipmentRad();
 						double equipHeight = readEquip.getEquipmentHeight();
-						int feetHeight = (int) (equipHeight / 12);
-						int equipRadius = feetHeight / 2;
+						double feetHeight = (int) (equipHeight / 12);
+						double equipRadius = feetHeight / 2;
 						
-						int equipTip = (int) (equipRadius + proposedRAD);
-						int equipBase = (int) (proposedRAD - equipRadius);
+						double equipTip = (double) (equipRadius + proposedRAD);
+						double equipBase = (double) (proposedRAD - equipRadius);
 						
 						double equipPricing = 0.00;
 						double linesPricing = 0.00;
@@ -108,7 +108,7 @@ public class ProjectServiceImpl implements ProjectService {
 							
 						} else if(equipTip > contractRADTip) {
 							
-							int difference = equipTip - contractRADTip;
+							double difference = equipTip - contractRADTip;
 							double percentage = (double) (difference / feetHeight);							
 							switch(equipType.toUpperCase()) {
 								
@@ -122,7 +122,11 @@ public class ProjectServiceImpl implements ProjectService {
 							
 							System.out.println("\n\nReached the Tip Height Price!!!1!!\n\n");
 							tipHeightPricing = ((equipPricing * percentage) * equipCount);	
-							System.out.println("\n\nEquip Tip is:" + equipTip + 
+							System.out.println("\n\nEquip Tip is:" + equipTip +
+											   "\nDifference is: " + difference +
+											   "\nFeet Height is: " + feetHeight +
+											   "\nPercentage is: " + percentage + 
+											   "\nEquip Count is: " + equipCount +
 											   "\nContract RAD Tip is:" + contractRADTip + 
 											   "\nTip Height Price is: " + tipHeightPricing + "\n\n");
 							
@@ -130,7 +134,7 @@ public class ProjectServiceImpl implements ProjectService {
 							
 						} else if(equipBase < contractRADBase) {
 							
-							int difference = contractRADBase - equipBase;
+							double difference = contractRADBase - equipBase;
 							double percentage = (double) (difference / feetHeight);							
 							switch(equipType.toUpperCase()) {
 								
