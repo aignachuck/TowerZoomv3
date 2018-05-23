@@ -85,25 +85,6 @@ public class ProjectController {
 		return "redirect:/main/projectsList";
 	}
 	
-//	//attempt to update pricing
-//	@GetMapping("/projectsList")
-//	public String listProjects(ModelMap theModel) {
-//		
-//		//get projects from the service
-//		List<Project> theProjects = projectService.getProjects();
-//		
-//		//newPricing = projectService.returnPricing();
-//		int theId = projectService.getProject(projectNumber);
-//		double newPricing =
-//			projectService.returnPricing(theId);
-//		
-//		
-//		//add projects to the model
-//		theModel.addAttribute("projects", theProjects);
-//		theModel.addAttribute("pricing", newPricing);
-//		
-//		return "project-list";
-//	}
 	
 	@GetMapping("/projectsList")
 	public String listProjects(Model theModel) {
